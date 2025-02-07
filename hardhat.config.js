@@ -1,4 +1,5 @@
 require("@matterlabs/hardhat-zksync-solc");
+require("@nomicfoundation/hardhat-toolbox");
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -6,9 +7,7 @@ module.exports = {
     version: "1.3.9",
     compilerSource: "binary",
     settings: {
-      optimizer: {
-        enabled: true,
-      },
+      optimizer: { enabled: true },
     },
   },
   networks: {
@@ -32,12 +31,11 @@ module.exports = {
     tests: "./test",
   },
   solidity: {
-    version: "0.8.17",
+    compilers: [
+      { version: "0.8.20" }, // Ensure this matches OpenZeppelin and your contract
+    ],
     settings: {
-      optimizer: {
-        enabled: true,
-        runs: 200,
-      },
+      optimizer: { enabled: true, runs: 200 },
     },
   },
 };
